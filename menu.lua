@@ -14,10 +14,9 @@ function newMenu()
 end  
 
 function Menu:mousePressed(mouseX, mouseY)
-  -- para 1 até todas as opções adicionadas no vetor option
   for i = 1, #self.options do
     if (checkMousePosInQuad(mouseX, mouseY, self.options[i].x, self.options[i].y, self.options[i].w, self.options[i].h)) then
-      return self.options[i].text -- retorna qual opçcao foi clicada atraves do texto  
+      return self.options[i].text 
     end
   end
   return ''
@@ -30,8 +29,6 @@ end
 function Menu:addOption(x, y, w, h, text)
   local color = {72/255, 160/255, 14/255}
   local option = newMenuOption(color, x, y, w, h, text)
-  
-  -- Colocando o elemento na ultimo posição (#self.options é o numero total)
   self.options[#self.options + 1] = option
 end  
 
@@ -51,6 +48,5 @@ function Menu:draw()
   for index = 1, #self.options do
     self.drawOption(self, index)
   end 
-  -- Carregando taxa de quadros por segundo
   love.graphics.print("FPS: "..tostring(love.timer.getFPS( )), 720, 10)
 end
